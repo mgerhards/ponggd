@@ -91,5 +91,10 @@ shape = SubResource("RectangleShape2D_trlu6")
 position = Vector2(-4, 323)
 shape = SubResource("RectangleShape2D_a6iag")
 
+[node name="SpeedTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="Walls/WallLeft" to="." method="_on_wall_left_body_entered"]
 [connection signal="body_entered" from="Walls/WallRight" to="." method="_on_wall_right_body_entered"]
+[connection signal="timeout" from="SpeedTimer" to="." method="_on_speed_timer_timeout"]
