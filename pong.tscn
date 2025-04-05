@@ -20,13 +20,13 @@ size = Vector2(32, 127)
 size = Vector2(1153, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ludyb"]
-size = Vector2(10, 658)
+size = Vector2(1167, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trlu6"]
 size = Vector2(12, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6iag"]
-size = Vector2(1152, 12)
+size = Vector2(8, 668)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ludyb")
@@ -54,7 +54,7 @@ texture = ExtResource("3_pkvn5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleLeft"]
 shape = SubResource("RectangleShape2D_pkvn5")
 
-[node name="PaddleRight" type="CharacterBody2D" parent="."]
+[node name="PaddleRight" type="StaticBody2D" parent="."]
 position = Vector2(1100, 100)
 script = ExtResource("5_ludyb")
 
@@ -76,17 +76,20 @@ shape = SubResource("RectangleShape2D_eipaa")
 [node name="WallBottom" type="StaticBody2D" parent="Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
-position = Vector2(-5, 319)
+position = Vector2(583.5, 654.5)
 shape = SubResource("RectangleShape2D_ludyb")
 
-[node name="WallLeft" type="StaticBody2D" parent="Walls"]
+[node name="WallLeft" type="Area2D" parent="Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
 position = Vector2(1158, 324)
 shape = SubResource("RectangleShape2D_trlu6")
 
-[node name="WallRight" type="StaticBody2D" parent="Walls"]
+[node name="WallRight" type="Area2D" parent="Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
-position = Vector2(576, 654)
+position = Vector2(-4, 323)
 shape = SubResource("RectangleShape2D_a6iag")
+
+[connection signal="body_entered" from="Walls/WallLeft" to="." method="_on_wall_left_body_entered"]
+[connection signal="body_entered" from="Walls/WallRight" to="." method="_on_wall_right_body_entered"]
