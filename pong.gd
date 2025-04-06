@@ -24,19 +24,24 @@ func reset_ball():
 	print("Score: P1: %d P2: %d" % [p1_score, p2_score])
 	p1ScoreLabel.text = "%d" % p1_score
 	p2ScoreLabel.text = "%d" % p2_score
-	
-	
 
 func _on_wall_left_body_entered(body: Node2D) -> void:
+	$EventLooseSound.play()
 	print("Point for P1 " + body.name)			
 	p1_score += 1
-	print("Player 1 scores! Score:", p2_score)
+	print("Player 1 scores! Score:", p1_score)
 	reset_ball()
 
 
 func _on_wall_right_body_entered(body: Node2D) -> void:
+	$EventLooseSound.play()
+	print("Point for P2 " + body.name)			
+	p2_score += 1
+	print("Player 2 scores! Score:", p2_score)
+	reset_ball()
 
 func _on_speed_timer_timeout() -> void:
+	
 	print("Speed increase")
 	ball.incSpeed()
 	speedTimer.start(5)

@@ -13,12 +13,15 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
+		$HitSound.play(0.0)
 		direction = direction.bounce(collision.get_normal()).normalized()
 	
 	if position.y < 0 or position.y > get_viewport_rect().size.y:
 		direction.y = -direction.y
 
 func bounce(normal: Vector2):
+	print("bounce..")
+	
 	direction = direction.bounce(normal).normalized()
 	
 func resetSpeed():
