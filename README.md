@@ -1,4 +1,4 @@
-# 🕹️ Tron Pong - A Retro Pong Clone in Godot 4.3
+# 🕹️ Ponggd - A Retro Pong Clone in Godot 4.3
 
 A modern, neon-glowing take on the classic Pong game, built with [Godot 4.3](https://godotengine.org/). Features two-player action, looped audio, and a retro-futuristic Tron-inspired backdrop.
 
