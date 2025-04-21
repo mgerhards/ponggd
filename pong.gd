@@ -9,12 +9,36 @@ extends Node2D
 
 var p1_score = -1
 var p2_score = -2	
+var state=GameState.IDLE
 
+enum GameState { IDLE, RUNNING }
 
+func _ready():
+	state = GameState.IDLE
+	$Menu.visible = true
+	$Ball.visible = false
+	$PaddleLeft.visible = false
+	$PaddleRight.visible = false
 
+func _on_StartButton_pressed():
+	state = GameState.RUNNING
+	$Menu.visible = false
+	$Ball.visible = true
+	$PaddleLeft.visible = true
+	$PaddleRight.visible = true
+	reset_ball()
+
+func _on_ExitButton_pressed():
+	get_tree().quit()
+	
 func _process(_delta):
 	if ball.position.x < 0 or ball.position.x > get_viewport_rect().size.x:
 		reset_ball()
+
+func start_game():
+	reset_ball()
+	p1_score = -1
+	p2_score = -2	
 
 func reset_ball():
 	print("Reset ball...")
